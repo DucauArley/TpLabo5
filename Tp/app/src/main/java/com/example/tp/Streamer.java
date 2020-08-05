@@ -61,13 +61,20 @@ public class Streamer implements Comparable
         }
         else
         {
-            if(this.estado && !str.getEstado())
+            if(this.estado)
             {
                 return -10;
             }
             else
             {
-                return this.nombre.compareTo(str.getNombre());
+                if(str.getEstado())
+                {
+                    return 10;
+                }
+                else
+                {
+                    return this.nombre.compareTo(str.getNombre());
+                }
             }
         }
     }

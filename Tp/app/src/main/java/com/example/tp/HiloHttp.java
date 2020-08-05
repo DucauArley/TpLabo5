@@ -27,20 +27,19 @@ public class HiloHttp extends Thread
         this.texto = texto;
     }
 
-
     @Override
     public void run()
     {
         HttpManager manager = new HttpManager();
 
-        /*try
+        try
         {
-            Thread.sleep(3000);
+            Thread.sleep(500);
         }
         catch (InterruptedException e)
         {
             e.printStackTrace();
-        }*/
+        }
 
 
         if (texto)

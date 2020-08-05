@@ -43,12 +43,11 @@ public class StreamerAdapter extends RecyclerView.Adapter<StreamerViewHolder> im
         Streamer s = this.streamers.get(position);
         TextView tvStreamer = holder.view.findViewById(R.id.tvStreamer);
         TextView tvTitulo = holder.view.findViewById(R.id.tvTitulo);
-        tvStreamer.setText(s.getNombre());
+        tvStreamer.setText(s.getNombre().substring(0,1).toUpperCase() + s.getNombre().substring(1));
         if(s.getEstado())
         {
             tvTitulo.setText(s.getVideo().get(0).getTitulo());
         }
-        //El problema con esto es que escribe los demas streamers. Osea que deberia de sacarlos de la lista para que no aparezca en blaco los espacios
     }
 
     @Override

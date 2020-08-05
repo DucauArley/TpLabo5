@@ -113,9 +113,9 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
             }
         }
 
-        Collections.sort(listaStreamers);
-
         this.adapter.notifyDataSetChanged();
+
+        Collections.sort(listaStreamers);
 
         rvStreamer.setAdapter(adapter);
 
