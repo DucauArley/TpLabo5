@@ -42,11 +42,13 @@ public class StreamerAdapter extends RecyclerView.Adapter<StreamerViewHolder> im
     {
         Streamer s = this.streamers.get(position);
         TextView tvStreamer = holder.view.findViewById(R.id.tvStreamer);
+        TextView tvLive = holder.view.findViewById(R.id.tvLive);
         TextView tvTitulo = holder.view.findViewById(R.id.tvTitulo);
         tvStreamer.setText(s.getNombre().substring(0,1).toUpperCase() + s.getNombre().substring(1));
-        if(s.getEstado())
-        {
+        if (s.getEstado()) {
+            Log.d("Nombrestreamertrue", s.getNombre());
             tvTitulo.setText(s.getVideo().get(0).getTitulo());
+            tvLive.setText("vivo");
         }
     }
 
@@ -69,6 +71,5 @@ public class StreamerAdapter extends RecyclerView.Adapter<StreamerViewHolder> im
             listener.onClick(v);
         }
     }
-
 
 }

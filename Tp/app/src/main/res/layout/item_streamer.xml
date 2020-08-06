@@ -15,7 +15,7 @@
     android:layout_marginLeft="3dp"
     android:layout_marginRight="3dp"
     android:layout_marginTop="4dp"
-    card_view:cardBackgroundColor="#ece7e7"
+    card_view:cardBackgroundColor="#CFCCCC"
     >
 
 <LinearLayout
@@ -23,18 +23,34 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="Hello World!"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:id="@+id/tvStreamer" />
 
+        <TextView
+            android:id="@+id/tvLive"
+            android:text=""
+            android:background="#DF0D0D"
+            android:textColor="#FFFFFF"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+    </RelativeLayout>
     <TextView
         android:id="@+id/tvTitulo"
         android:text="Videos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </LinearLayout>
 
 </androidx.cardview.widget.CardView>

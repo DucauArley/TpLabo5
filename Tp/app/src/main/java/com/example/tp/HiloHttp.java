@@ -62,10 +62,6 @@ public class HiloHttp extends Thread
                         this.streamer.setVideo(v);
                     }
                 }
-
-            /*Devuelve [] Podria usar esto como solucion
-            previsoria hasta que encuentre algo mejor para mostrar que esta en vivo o sino le agrego solamente el titulo del
-            video y se lo mando de una*/
             }
             catch (XmlPullParserException e)
             {

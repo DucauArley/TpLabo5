@@ -49,6 +49,24 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
         SharedPreferences prefs = getSharedPreferences("Streamers", Context.MODE_PRIVATE);
         listaStreamers = new ArrayList<Streamer>();
+
+        try
+        {
+            jsonArray = new JSONArray(prefs.getString("Streamers", "[]"));
+            if(!jsonArray.equals("[]"))
+            {
+                for (int i=0; i < jsonArray.length(); i++)
+                {
+                    Log.d("ishere", jsonArray.getJSONObject(i).getString("Nombre"));
+                    listaStreamers.add(new Streamer(jsonArray.getJSONObject(i).getString("Nombre")));
+                }
+            }
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
         listaStreamers.add(new Streamer("frankkaster"));
         listaStreamers.add(new Streamer("coscu"));
         listaStreamers.add(new Streamer("goncho"));
@@ -58,23 +76,6 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
         listaStreamers.add(new Streamer("elcanaldejoaco"));
         listaStreamers.add(new Streamer("momoladinastia"));
         listaStreamers.add(new Streamer("loltyler1"));
-
-        try
-        {
-           jsonArray = new JSONArray(prefs.getString("Streamers", "[]"));
-           if(!jsonArray.equals("[]"))
-           {
-               for (int i=0; i < jsonArray.length(); i++)
-               {
-                   Log.d("ishere", jsonArray.getJSONObject(i).getString("Nombre"));
-                  listaStreamers.add(new Streamer(jsonArray.getJSONObject(i).getString("Nombre")));
-               }
-           }
-        }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
 
         HiloHttp miHilo;
 
@@ -89,7 +90,12 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
         adapter.setOnClickListener(new MyListenerStreamer(this));
 
-        //Incorporar en carpeta los cardviews
+        rvStreamer.setAdapter(adapter);
+
+        rvStreamer.setLayoutManager(new LinearLayoutManager(this));
+
+        rvStreamer.setItemViewCacheSize(50);
+
 
         /*miHilo = new HiloHttp(handler, "https://twitchrss.appspot.com/vod/frankkaster", true);
         miHilo.start();*/
@@ -116,10 +122,6 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
         this.adapter.notifyDataSetChanged();
 
         Collections.sort(listaStreamers);
-
-        rvStreamer.setAdapter(adapter);
-
-        rvStreamer.setLayoutManager(new LinearLayoutManager(this));
 
         return false;
     }
